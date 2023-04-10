@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Media;
 using System.Net;
@@ -12,10 +12,10 @@ namespace С__firstapp
 
         static void Main(string[] args)
         {
-            
 
+            Console.Beep(200, 200);
+            Console.Beep(300, 200);
 
-            
 
             while (true)
             {
@@ -45,18 +45,19 @@ namespace С__firstapp
                     Console.WriteLine("play - проигрывает музыку");
                     Console.WriteLine("game,game2 - миниигры");
                     Console.ResetColor();
+                    Console.Beep(500, 200);
+                    Console.Beep(400, 200);
                 }
 
 
 
                 else if (command == "about")
                 {
-                   
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.Clear();
                     Console.WriteLine("о програме:");
                     Console.WriteLine("C# my console");
-                    Console.WriteLine("Version - 0.2.5");
+                    Console.WriteLine("Version - negr.fun.cs");
                     Console.WriteLine("02.04.2023");
                     Console.WriteLine();
                     Console.WriteLine("о системе:");
@@ -65,6 +66,9 @@ namespace С__firstapp
                     Console.WriteLine("имя пк: " + Environment.MachineName);
                     Console.WriteLine("Модель процессора:" + Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER"));
                     Console.WriteLine("Имя текущего пользователя:" + Environment.UserName);
+                    Console.Beep(500, 200);
+                    Console.Beep(400, 200);
+                    Console.Beep(600, 200);
 
                     Console.ResetColor();
                 }
@@ -101,6 +105,10 @@ namespace С__firstapp
 
                 else if (command == "exit")
                 {
+                    Console.WriteLine("это версия для фана");
+                    Console.ReadKey();
+                    Console.Beep(500, 200);
+                    Console.Beep(900, 200);
                     break;
                 }
 
@@ -143,9 +151,9 @@ namespace С__firstapp
                     Console.ResetColor();
                 }
 
-               else if (command == "game2")
+                else if (command == "game2")
                 {
-                    Console.ForegroundColor= ConsoleColor.DarkGreen;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.Clear();
                     int a, b, c, o;
                     Random a1 = new Random();
@@ -174,23 +182,23 @@ namespace С__firstapp
                         System.Threading.Thread.Sleep(2000);
                         Console.Clear();
                     }
-                    Console.ResetColor ();
+                    Console.ResetColor();
 
                 }
 
                 else if (command == "game")
                 {
-                    Console.ForegroundColor= ConsoleColor.DarkGreen;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.Clear();
                     Console.WriteLine("В этой игре вы должны угадать загадонное число от 1 до 5");
 
-                    
+
                     for (int i = 5; i >= 0; i--)
                     {
                         Random sus = new Random();
-                       string game = Convert.ToString(sus.Next(1,6));
+                        string game = Convert.ToString(sus.Next(1, 6));
                         Console.Write(">>");
-                       string game2 = Console.ReadLine();
+                        string game2 = Console.ReadLine();
 
                         if (i == 0)
                         {
@@ -208,18 +216,19 @@ namespace С__firstapp
                             Console.Clear();
                             break;
                         }
-                        
+
 
                         else
                         {
-                            Console.WriteLine("неверно осталось попыток:"+i);
+                            Console.WriteLine("неверно осталось попыток:" + i);
                         }
                     }
                 }
 
                 else
-                {   Console.ForegroundColor= ConsoleColor.DarkRed;
-                    Console.WriteLine("Неизвестная команда ("+command+") введите help чтобы увидеть список команд");
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Неизвестная команда '" + command + "' введите help чтобы увидеть список команд");
                     Console.ResetColor();
                 }
             }
