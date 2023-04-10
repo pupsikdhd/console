@@ -14,8 +14,7 @@ namespace С__firstapp
         {
             
 
-            Console.Beep(500,200);
-            Console.Beep(400, 200);
+
             
 
             while (true)
