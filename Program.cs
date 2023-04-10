@@ -52,7 +52,7 @@ namespace С__firstapp
 
                 else if (command == "about")
                 {
-                    System.Threading.Thread.Sleep(5000);
+                   
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.Clear();
                     Console.WriteLine("о програме:");
