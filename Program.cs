@@ -16,10 +16,12 @@ namespace С__firstapp
             Console.Beep(200, 200);
             Console.Beep(300, 200);
 
-
+            string consoles = "start console";
+            string cas = File.ReadAllText("commands.txt");
+            File.WriteAllText("commands.txt", $"{cas}\n{consoles}");
             while (true)
             {
-
+            
                 string command;
                 Console.Write(">>");
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -27,8 +29,7 @@ namespace С__firstapp
                 Console.ResetColor();
 
                 if (command == "clear")
-                { Console.Clear(); }
-
+                { Console.Clear(); consoles = "clear"; }
                 else if (command == "help")
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -41,23 +42,34 @@ namespace С__firstapp
                     Console.WriteLine("create - создание файла");
                     Console.WriteLine("download - скачивание файла");
                     Console.WriteLine("DateTime - выводит дату и время");
-                    Console.WriteLine("dir - вывод пути расположения программы");
+                    Console.WriteLine("workpath - вывод пути расположения программы");
                     Console.WriteLine("play - проигрывает музыку");
                     Console.WriteLine("game,game2 - миниигры");
+                    Console.WriteLine("history - история команд(всё в файле)");
+                    Console.WriteLine("history clear - удаляет историю команд(всё в файле)");
                     Console.ResetColor();
                     Console.Beep(500, 200);
                     Console.Beep(400, 200);
+                    consoles = "help";
+                }
+
+                else if (command == "history")
+                {
+                    string casu = File.ReadAllText("commands.txt");
+                    Console.WriteLine(casu);
+
                 }
 
 
+
+                
 
                 else if (command == "about")
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.Clear();
                     Console.WriteLine("о програме:");
-                    Console.WriteLine("C# my console");
-                    Console.WriteLine("Version - negr.fun.cs");
+                    Console.WriteLine("Version - 0.2.1.cv");
                     Console.WriteLine("02.04.2023");
                     Console.WriteLine();
                     Console.WriteLine("о системе:");
@@ -69,7 +81,7 @@ namespace С__firstapp
                     Console.Beep(500, 200);
                     Console.Beep(400, 200);
                     Console.Beep(600, 200);
-
+                    consoles = "about";
                     Console.ResetColor();
                 }
 
@@ -81,6 +93,7 @@ namespace С__firstapp
                     string FileName = Console.ReadLine();
                     File.Delete(FileName);
                     Console.ResetColor();
+                    consoles = "delete";
                 }
 
                 else if (command == "dir create")
@@ -90,6 +103,7 @@ namespace С__firstapp
                     string dir = Console.ReadLine();
                     Console.ResetColor();
                     Directory.CreateDirectory(dir);
+                    consoles = "dir create";
                 }
 
                 else if (command == "create")
@@ -100,15 +114,14 @@ namespace С__firstapp
                     string file = Console.ReadLine();
                     Console.ResetColor();
                     File.Create(file);
-
+                    consoles = "create";
                 }
 
                 else if (command == "exit")
                 {
-                    Console.WriteLine("это версия для фана");
-                    Console.ReadKey();
                     Console.Beep(500, 200);
                     Console.Beep(900, 200);
+                    consoles = "exit";
                     break;
                 }
 
@@ -122,13 +135,15 @@ namespace С__firstapp
                     string filename = Console.ReadLine();
                     Console.ResetColor();
                     webcl.DownloadFile(web, filename);
+                    consoles = "download";
                 }
 
-                else if (command == "dir")
+                else if (command == "workpath")
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("вы работаете по пути " + Environment.CurrentDirectory);
                     Console.ResetColor();
+                    consoles = "workpath";
                 }
 
                 else if (command == "DateTime")
@@ -137,6 +152,7 @@ namespace С__firstapp
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("Текущее время и число: " + dateTime);
                     Console.ResetColor();
+                    consoles = "DateTime";
                 }
 
                 else if (command == "play")
@@ -149,6 +165,7 @@ namespace С__firstapp
                     player.SoundLocation = music;
                     player.Play();
                     Console.ResetColor();
+                    consoles = "play";
                 }
 
                 else if (command == "game2")
@@ -183,6 +200,7 @@ namespace С__firstapp
                         Console.Clear();
                     }
                     Console.ResetColor();
+                    consoles = "game2";
 
                 }
 
@@ -192,6 +210,7 @@ namespace С__firstapp
                     Console.Clear();
                     Console.WriteLine("В этой игре вы должны угадать загадонное число от 1 до 5");
 
+                    consoles = "game";
 
                     for (int i = 5; i >= 0; i--)
                     {
@@ -230,7 +249,10 @@ namespace С__firstapp
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Неизвестная команда '" + command + "' введите help чтобы увидеть список команд");
                     Console.ResetColor();
+                    consoles = "error command";
                 }
+                cas = File.ReadAllText("commands.txt");
+                File.WriteAllText("commands.txt",$"{cas}\n{consoles}");
             }
         }
     }
